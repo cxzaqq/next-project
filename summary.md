@@ -24,3 +24,20 @@ backend에서 render되고 fontend에서 hydrate 하겠다.
 
 layout은 중첩됨
 metadata는 server component에만 있을 수 있고 병합됨
+
+Next에서는 fetch하면 응답을 알아서 캐싱함.
+첫 access만 로딩 필요(API hit). 이후 접근은 캐시된 데이터로 로딩 없음(no API hit).
+근데 최신 데이터가 필요한 순간이 있을 수 있음.
+=> 캐싱, revalidation 알아보기
+
+Promise.all을 사용하여 병렬 fetch 가능
+근데 Promise.all 내부에 있는 함수들이 모두 끝나야 확인 가능
+=> Suspense 사용해서 따로 따로 render 가능
+fallback은 Suspense 내부의 컴포넌트가 render되기 전 보여줄 컴포넌트
+
+NextJS 특수 파일
+page.tsx
+error.tsx
+loading.tsx
+not-found.tsx
+layout.tsx
